@@ -1,22 +1,17 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useState, useMemo } from 'react'
 
 function App() {
-	const inputRef = useRef(null)
-
-	useLayoutEffect(() => {
-		console.log(inputRef.current.value)
-	}, [])
-
-	useEffect(() => {
-		inputRef.current.value = 'Vasya'
-	}, [])
+	const [name, setName] = useState('')
+	const age = 22
+	const getName = useCallback(() => ({
+		console.log(name)
+	}), [name])
 
 
 	return (
 		<div>
 			<h3>htmllessons.ru (JS Version)</h3>
 			<input
-				ref={inputRef}
 				placeholder="Enter name"
 				defaultValue="Liza" />
 
