@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useRef } from 'react'
 import { useAuth } from './AuthContext'
 import { useLocalStorage } from './hooks/local-storage/useLocalStorage'
 import { initialState } from './reducer'
@@ -7,7 +7,8 @@ const AppTs: FC = () => {
 	const { isAuth } = useAuth()
 	const [todos, setTodos] = useLocalStorage('todos', initialState)
 
-	// console.log(todos)
+	const inputRef = useRef<HTMLInputElement>(null)
+	inputRef.current?.value
 
 	return (
 		<div style={{ marginTop: 100 }}>

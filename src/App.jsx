@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 
 function App() {
-	const [data, setData] = useState({})
+	const inputRef = useRef(null)
+
+	useLayoutEffect(() => {
+		console.log(inputRef.current.value)
+	}, [])
 
 	useEffect(() => {
-		console.log('Hello')
-	}, [data.name])
+		inputRef.current.value = 'Vasya'
+	}, [])
 
 
 	return (
 		<div>
 			<h3>htmllessons.ru (JS Version)</h3>
-			<input value={data.name} onChange={e => setData(prev => ({ ...prev, name: e.target.value }))} placeholder="Enter name" />
-			<div>
-				<b>Value:</b>
-				{data.name}
-			</div>
+			<input
+				ref={inputRef}
+				placeholder="Enter name"
+				defaultValue="Liza" />
+
 		</div>
 	)
 }
