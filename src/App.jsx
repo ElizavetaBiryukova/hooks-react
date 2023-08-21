@@ -1,19 +1,17 @@
-import React, { useState, useMemo } from 'react'
+import React from 'react'
+import { useName } from './ useName'
 
 function App() {
-	const [name, setName] = useState('')
-	const age = 22
-	const getName = useCallback(() => ({
-		console.log(name)
-	}), [name])
-
+	const { name, setName } = useName()
 
 	return (
 		<div>
 			<h3>htmllessons.ru (JS Version)</h3>
 			<input
+				value={name}
 				placeholder="Enter name"
-				defaultValue="Liza" />
+				onChange={e => setName(e.target.value)} />
+
 
 		</div>
 	)
